@@ -1,5 +1,5 @@
 ---
-date: 2020-07-08 01:00:00 -0000
+date: 2020-07-08 03:30:00 -0000
 categories: pyside2
 tags:
   - python
@@ -121,7 +121,7 @@ app.exec_()
 ```
 
 ### 결과
-![](https://github.com/jeakwon/pyside2/blob/master/03_widgets/wid1.png){: .align-center}
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid1.png){: .align-center}  
 위 사진에서 볼 수 있듯, Qt에 내장된 위젯은 형태 뿐만 아니라 기능적으로도
 파일접근, 날짜, 폰트, 색깔선택 등 상당히 유용하다. 이는 윈도우뿐만 아니라 MacOS, 리눅스에서도 같은 코드로 구동이 가능하다.
 
@@ -174,10 +174,10 @@ app.exec_()
 ```
 
 ### 결과
-![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid2.png){: .align-center}
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid2.png){: .align-center}  
 
 ### 살펴보기
-1. MainWindow 위젯
+#### 1. MainWindow 위젯
 ```python
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -189,9 +189,10 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(label)
 ```
+
 위 코드에서 `.setWindowTitle`, `.setFixedSize`, `.setCentralWidget` 이 세 가지는 메인 윈도우 위젯에 관한 것이다. 앱의 타이틀과 사이즈 그리고 메인 위젯을 설정하는 방법.
 
-2. Label 위젯
+#### 2. Label 위젯
 ```python
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -203,8 +204,8 @@ class MainWindow(QMainWindow):
 
         label.setFont(font)
         label.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
 ```
+
 `QLabel`로 label 객체를 생성해주고 중략 되었지만, 중간에 font 객체를 생성한 뒤
 `.setFont`로 우리가 만든 폰트객체를 지정해준다. 그 후 label의 위치를 정하기 위해
 `.setAlignment`로 위치를 지정해준다. 이때 `Qt.AlignHCenter`, `Qt.AlignVCenter`는
@@ -224,7 +225,7 @@ VCenter: Vertical Center, 수직중앙)
 {: .notice--info}
 
 
-3. Label 위젯
+#### 3. font
 ```python
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -241,7 +242,7 @@ class MainWindow(QMainWindow):
 ```
 폰트는 이미 `QLabel`객체에 딸려있는 객체로, 생성한 객체에서 `.font()`를 통해 접근할 수 있다. 여기서는 접근한 폰트의 특성 중 네 가지(사이즈, 종류, 이텔릭, 밑줄)를 수정 해 보았다.
 
-## 2. QCheckBox
+## 3. QCheckBox
 체크박스 위젯은 말 그대로 체크표시를 할 수 있는 박스이며, 위젯이 자체적으로 체크가 되었는지 되지 않았는지 정보를 담는 역할을 할 수 있다고 보면 된다.
 ```python
 from PySide2.QtWidgets import QCheckBox
@@ -280,7 +281,7 @@ window.show()
 app.exec_()
 ```
 ### 결과
-![](https://github.com/jeakwon/pyside2/blob/master/03_widgets/wid3.png){: .align-center}
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid3.png){: .align-center}  
 ```
 2 True
 0 False
@@ -335,7 +336,7 @@ app.exec_()
 ```
 
 ### 결과
-![](https://github.com/jeakwon/pyside2/blob/master/03_widgets/wid4.png){: .align-center}
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid4.png){: .align-center}  
 ```
 1 PartiallyChecked
 2 Checked
