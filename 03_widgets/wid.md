@@ -301,7 +301,11 @@ class MainWindow(QMainWindow):
     def state_changed(self, state):
         # ...
 ```
-단계별로 살펴보면 1. `QCheckBox` 객체생성 2. `state_changed` 매소드(슬롯)생성 3. `stateChanged`시그널을 `state_changed`슬롯에 `.connect`연결. 4. `state`는 임의로 지정해준 인수이름로 시그널이 발생시킨 이미 정의된(pre-defined) 데이터를 전송하는 역할을
+단계별로 살펴보면  
+`QCheckBox` 객체생성  
+`state_changed` 매소드(슬롯)생성  
+`stateChanged`시그널을 `state_changed`슬롯에 `.connect`연결.  
+`state`는 임의로 지정해준 인수이름로 시그널이 발생시킨 이미 정의된(pre-defined) 데이터를 전송하는 역할을
 수행하고 있다. 여기선(0 또는 2)
 
 ### 소스코드2
@@ -358,9 +362,10 @@ class MainWindow(QMainWindow):
         elif state == Qt.Unchecked:
         elif state == Qt.PartiallyChecked:
 ```
-`setTristate`는 3옵션 체크박스를 활성화 시키는 것이고, `setCheckState`는 처음 위젯의
-상태를 결정하는 것으로 여기서는 `Qt.PartiallyChecked`를 지정해서 예와 아니오의 중간단계로 
-시작. `state_changed`에서는 위에서와 마찬가지로 `state`라는 데이터를 수신하여 현재 위젯의
+`setTristate`는 3옵션 체크박스를 활성화 시키는 것이고,  
+`setCheckState`는 처음 위젯의 상태를 결정하는 것으로 여기서는  
+`Qt.PartiallyChecked`를 지정해서 예와 아니오의 중간단계로 시작.  
+`state_changed`에서는 위에서와 마찬가지로 `state`라는 데이터를 수신하여 현재 위젯의
 상태가 어떤상탠지 검사하는 매소드를 구현 하였다.
 
 **Check State Flags**  
@@ -368,6 +373,13 @@ class MainWindow(QMainWindow):
 @ `Qt.PartiallyChecked`: 중간 상태로, 데이터는 1을 송신한다.  
 @ `Qt.Checked`: 체크가 된 상태로, 데이터는 2를 송신한다.  
 {: .notice--info}
+
+## 4. QComboBox
+## 5. QListBox
+## 6. QLineEdit
+## 7. QSpinBox, QDoubleSpinBox
+## 8. QSlider
+## 9. QDial
 
 # 참고
 * This post was written based on Martin Fitzpatrick's Create GUI Applications with QT & Python - PySide2 [Official Link](www.learnpyqt.com){: .btn .btn--inverse}
