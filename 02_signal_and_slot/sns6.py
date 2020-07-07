@@ -1,3 +1,5 @@
+# https://jeakwon.github.io/pyside2/pyside2-signal-and-slot/
+
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow, QPushButton
 
