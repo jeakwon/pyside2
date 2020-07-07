@@ -1,7 +1,6 @@
 # https://jeakwon.github.io/pyside2/pyside2-widgets/
 
 import sys
-from PySide2 import QtWidgets
 from PySide2.QtWidgets import *
 
 class MainWindow(QMainWindow):
