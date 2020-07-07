@@ -9,13 +9,18 @@ class MainWindow(QMainWindow):
         super().__init__()
         layout = QVBoxLayout()
         widgets = [
+            QCalendarWidget,
             QCheckBox,
+            QColorDialog,
             QComboBox,
+            QCommandLinkButton,
             QDateEdit,
             QDateTimeEdit,
             QDial,
             QDoubleSpinBox,
+            QFileDialog,
             QFontComboBox,
+            QFontDialog,
             QLCDNumber,
             QLabel,
             QLineEdit,
@@ -25,21 +30,17 @@ class MainWindow(QMainWindow):
             QSlider,
             QSpinBox,
             QTimeEdit,
+            QToolButton,
             # QAbstractScrollArea,
             # QAbstractSlider,
             # QAbstractSpinBox,
-            # QCalendarWidget,
-            # QColorDialog,
             # QColumnView,
-            # QCommandLinkButton,
             # QDesktopWidget,
             # QDialog,
             # QDialogButtonBox,
             # QDockWidget,
             # QErrorMessage,
-            # QFileDialog,
             # QFocusFrame,
-            # QFontDialog,
             # QFrame,
             # QGraphicsView,
             # QGroupBox,
@@ -70,7 +71,6 @@ class MainWindow(QMainWindow):
             # QTextEdit,
             # QToolBar,
             # QToolBox,
-            # QToolButton,
             # QTreeView,
             # QTreeWidget,
             # QUndoView,
@@ -84,7 +84,11 @@ class MainWindow(QMainWindow):
         
         widget = QWidget()
         widget.setLayout(layout)
-        self.setCentralWidget(widget)
+        
+        scroll = QScrollArea()
+        scroll.setWidget(widget)
+
+        self.setCentralWidget(scroll)
 
 app = QApplication(sys.argv)
 win = MainWindow()

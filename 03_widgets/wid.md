@@ -19,6 +19,74 @@ PySide2의 위젯에 대하여 알아보자
 사용자가 새롭게 만들 수도 있다.
 
 ## 1. 위젯의 종류
+QAbstractScrollArea
+QAbstractSlider
+QAbstractSpinBox
+QCalendarWidget
+QCheckBox
+QColorDialog
+QColumnView
+QComboBox
+QCommandLinkButton
+QDateEdit
+QDateTimeEdit
+QDesktopWidget
+QDial
+QDialog
+QDialogButtonBox
+QDockWidget
+QDoubleSpinBox
+QErrorMessage
+QFileDialog
+QFocusFrame
+QFontComboBox
+QFontDialog
+QFrame
+QGraphicsView
+QGroupBox
+QInputDialog
+QKeySequenceEdit
+QLCDNumber
+QLabel
+QLineEdit
+QListView
+QListWidget
+QMainWindow
+QMdiArea
+QMdiSubWindow
+QMenu
+QMenuBar
+QMessageBox
+QOpenGLWidget
+QPlainTextEdit
+QProgressBar
+QProgressDialog
+QPushButton
+QRadioButton
+QScrollArea
+QScrollBar
+QSlider
+QSpinBox
+QSplashScreen
+QSplitter
+QStackedWidget
+QStatusBar
+QTabBar
+QTabWidget
+QTableView
+QTableWidget
+QTextBrowser
+QTextEdit
+QTimeEdit
+QToolBar
+QToolBox
+QToolButton
+QTreeView
+QTreeWidget
+QUndoView
+QWidget
+QWizard
+QWizardPage
 ### 소스코드
 **wid1.py**
 ```python
@@ -31,13 +99,18 @@ class MainWindow(QMainWindow):
         super().__init__()
         layout = QVBoxLayout()
         widgets = [
+            QCalendarWidget,
             QCheckBox,
+            QColorDialog,
             QComboBox,
+            QCommandLinkButton,
             QDateEdit,
             QDateTimeEdit,
             QDial,
             QDoubleSpinBox,
+            QFileDialog,
             QFontComboBox,
+            QFontDialog,
             QLCDNumber,
             QLabel,
             QLineEdit,
@@ -47,21 +120,17 @@ class MainWindow(QMainWindow):
             QSlider,
             QSpinBox,
             QTimeEdit,
+            QToolButton,
             # QAbstractScrollArea,
             # QAbstractSlider,
             # QAbstractSpinBox,
-            # QCalendarWidget,
-            # QColorDialog,
             # QColumnView,
-            # QCommandLinkButton,
             # QDesktopWidget,
             # QDialog,
             # QDialogButtonBox,
             # QDockWidget,
             # QErrorMessage,
-            # QFileDialog,
             # QFocusFrame,
-            # QFontDialog,
             # QFrame,
             # QGraphicsView,
             # QGroupBox,
@@ -92,7 +161,6 @@ class MainWindow(QMainWindow):
             # QTextEdit,
             # QToolBar,
             # QToolBox,
-            # QToolButton,
             # QTreeView,
             # QTreeWidget,
             # QUndoView,
@@ -106,7 +174,11 @@ class MainWindow(QMainWindow):
         
         widget = QWidget()
         widget.setLayout(layout)
-        self.setCentralWidget(widget)
+        
+        scroll = QScrollArea()
+        scroll.setWidget(widget)
+
+        self.setCentralWidget(scroll)
 
 app = QApplication(sys.argv)
 win = MainWindow()
