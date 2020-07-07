@@ -10,7 +10,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.btn)
 
     def btn_released(self):
-        print(self.btn.isChecked())
+        self.btn_checked = self.btn.isChecked()
+        print(self.btn_checked)
         
 
 app = QApplication(sys.argv)

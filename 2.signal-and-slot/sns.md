@@ -175,8 +175,14 @@ class MainWindow(QMainWindow):
         self.btn_checked = checked # added from sns1.py
 ```
 
-`self.btn_checked = checked`를 통해서 MainWindow 객체에 수신된 데이터를 저장할 수 있다. 이를 통해서 사용자가 원하는 방식으로 
-수신된 데이터를 후처리 할 수도 있다.
+`self.btn_checked = checked`를 통해서 MainWindow 객체에 수신된 데이터를 저장할 수 있다. 
+이를 통해서 사용자가 원하는 방식으로 수신된 데이터를 후처리 할 수도 있다.
+
+**데이터 저장**
+위젯의 현재 상태를 파이썬의 변수로 저장하는 것이 용이한 경우가 있다. 왜냐하면 원래 객체에 
+접근하지 않더라도 저장된 상태에만 접근하여 작업할 수 있게 만들어 주기 대문이다. 필요하다면
+`Dictionary` 형태로 관리할 수도 있으니 참고.
+
 
 ## 5. 버튼 릴리즈는 데이터 수신이 불가
 ### 소스코드
@@ -224,14 +230,15 @@ class MainWindow(QMainWindow):
     def btn_released(self): # changed from sns4.py
         print("Released") # changed from sns4.py
 
-    def btn_toggled(self, checked):  # should invoke TypeError
+    def btn_toggled(self, checked): # should invoke TypeError
         self.btn_checked = checked
         print(self.btn_checked)
 ```
 
-`btn.released.connect`
+`btn.released.connect`는 `btn.clicked.connect`와는 다르게, 데이터를 수신하지 못하는 것을 
+`TypeError`를 통해 알 수 있다. 이는 `btn.released`라는 신호가 따로 송신한 데이터가 없기 때문이다.
 
-## 6. 객체 싱태 접근을 통한 우회
+## 6. 객체 상태 접근을 통한 우회
 ### 소스코드
 **sns6.py**
 ```python
@@ -247,7 +254,8 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(self.btn)
 
     def btn_released(self):
-        print(self.btn.isChecked())
+        self.btn_checked = self.btn.isChecked()
+        print(self.btn_checked)
         
 
 app = QApplication(sys.argv)
@@ -262,3 +270,21 @@ True
 False
 True
 ```
+
+### 설명
+```python
+class MainWindow(QMainWindow):
+    def __init__(self):
+        # ...
+        self.btn = QPushButton("Push")
+
+    def btn_released(self):
+        print(self.btn.isChecked())
+```
+
+앞선 예제들과는 다르게 이번에는 버튼을 `self.btn`으로 `MainWindow`객체에 속하게
+만들었다. 그 이유는 바로 `MainWindow`의 객체에 속한 메소드 `btn_released`에서
+`self.btn`객체에 속한 `.isChecked()`라는 메소드에 접근하기 위해서 이다.
+이렇게 만들면, **sns5.py**에서 `self.btn_checked`로 데이터를 저장한 것과 같은
+효과를 낼 수가 있다.
+
