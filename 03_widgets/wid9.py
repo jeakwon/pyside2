@@ -8,10 +8,9 @@ class MainWindow(QMainWindow):
         super().__init__()
         widget = QSlider()
         widget.setMinimum(-10)
-        widget.setMaximum(3)
-        # Or: widget.setRange(-10,3)
+        widget.setMaximum(10)
         
-        widget.setSingleStep(3)
+        widget.setSingleStep(2)
         widget.valueChanged.connect(self.value_changed)
         widget.sliderMoved.connect(self.slider_position)
         widget.sliderPressed.connect(self.slider_pressed)
@@ -20,16 +19,16 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
     
     def value_changed(self, data):
-        print(data)
+        print("[value_changed]", data)
     
     def slider_position(self, data):
-        print("position", data)
+        print("[slider_position]", data)
     
     def slider_pressed(self):
-        print("Pressed!")
+        print("[slider_pressed]")
     
     def slider_released(self):
-        print("Released")
+        print("[slider_released]")
 
 app = QApplication(sys.argv)
 window = MainWindow()
