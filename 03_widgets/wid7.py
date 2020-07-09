@@ -17,7 +17,7 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 
     def return_pressed(self):
-        self.centralWidget().setText("BOOM!")
+        self.centralWidget().setText("return_pressed")
         print("[return_pressed]")
 
     def selection_changed(self):

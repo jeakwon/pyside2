@@ -281,14 +281,7 @@ window.show()
 app.exec_()
 ```
 ### 결과
-![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid3.png){: .align-center}  
-```
-2 True
-0 False
-2 True
-0 False
-2 True
-```
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid3.gif){: .align-center}
 
 ### 살펴보기
 ```python
@@ -340,14 +333,7 @@ app.exec_()
 ```
 
 ### 결과
-![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid4.png){: .align-center}  
-```
-1 PartiallyChecked
-2 Checked
-0 Unchecked
-1 PartiallyChecked
-2 Checked
-```
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid4.gif){: .align-center}  
 
 ### 살펴보기
 ```python

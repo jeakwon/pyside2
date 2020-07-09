@@ -8,17 +8,17 @@ class MainWindow(QMainWindow):
         super().__init__()
         widget = QListWidget()
         
-        widget.addItems(["a", "b", "c"])
-        widget.currentItemChanged.connect(self.index_changed)
+        widget.addItems(["First", "Second", "Third"])
+        widget.currentItemChanged.connect(self.item_changed)
         widget.currentTextChanged.connect(self.text_changed)
         
         self.setCentralWidget(widget)
 
-    def index_changed(self, i):
-        print(i.text())
+    def item_changed(self, data):
+        print('item_changed', data.text())
 
-    def text_changed(self, s):
-        print(s)
+    def text_changed(self, data):
+        print('text_changed', data)
         
 app = QApplication(sys.argv)
 win = MainWindow()
