@@ -12,5 +12,5 @@ header:
 PySide2의 레이아웃에 대하여 알아보자
 [소스코드](https://github.com/jeakwon/pyside2/tree/master/04_layouts){: .btn .btn--primary}
 
-# Layouts
+# 1. 레이아웃이란
 
