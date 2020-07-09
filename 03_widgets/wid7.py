@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
         print("[return_pressed]")
 
     def selection_changed(self):
-        s = self.centralWidget().selectedText()
+        data = self.centralWidget().selectedText()
         print("[selection_changed]", data)
         
     def text_changed(self, data):

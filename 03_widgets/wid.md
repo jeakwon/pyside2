@@ -361,6 +361,11 @@ class MainWindow(QMainWindow):
 {: .notice--info}
 
 ## 4. QComboBox
+`QComboBox`는 드롭다운 리스트로, 화살표를 눌러 리스트에서 아이템을 선택한다. 그리고 현재 
+선택되어진 아이템이 위젯에 보여지게 된다. 많은 선택지 중 하나를 고를 때 유용한 위젯이다.
+대표적으로 많이 사용되는 예가 글자 폰트의 종류나 사이즈를 선택할때 많이 사용된다. 사실
+Qt는 폰트 선택 옵션을 이미 `QFontComboBox` 위젯으로 제공하고 있다.
+
 ### 소스코드
 **wid5.py**
 ```python
@@ -393,7 +398,33 @@ app.exec_()
 ### 결과
 ![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid5.gif){: .align-center}
 
+### 설명
+`.currentIndexChanged`는 콤보박스의 시그널로, 선택된 아이템이 변화시 변화된 `index`를 `int`로 보낸다
+`.currentTextChanged`역시 콤보박스의 시그널로, 선택된 아이템이 변화시 변화된 `text`를 `str`로 보낸다
+
+**유저가 직접 아이템에 추가하게 하려면**  
+@ 콤보박스는 수정이 가능한데, `.setEditable(True)` 유저가 실제로 값을 입력하여 리스트에 포함 시킬 수 있다.  
+@ 추가할때 리스트 업데이트 방식을 `.setInsertPolicy(QComboBox.InsertAtTop)`로 설정해줄 수 있다.  
+@ 최대 개수는 `.setMaxCount(20)`로 제한 할 수도 있다.
+{: .notice--primary}
+
+**QComboBox Insert Behavior Flags**  
+@ QComboBox.NoInsert  
+@ QComboBox.InsertAtTop  
+@ QComboBox.InsertAtCurrent  
+@ QComboBox.InsertAtBottom  
+@ QComboBox.InsertAfterCurrent  
+@ QComboBox.InsertBeforeCurrent  
+@ QComboBox.InsertAlphabetically  
+{: .notice--info}
+
+
 ## 5. QListBox
+`QListBox`는 `QComboBox`와 유사하지만, 하나의 아이템만 표시하는 것이 아니라, 리스트 자체를 스크롤 가능한
+형태로 보여주고, 한번에 여러개 선택을 가능하게 해준다. `currentTextChanged`를 이용하면 현재 아이템의 Text
+시그널을 보내주지만, `currentItemChanged` 시그널이용하면 `QListItem`형태로 객체 자체를 시그널로 전송해 줄
+수도 있다. 
+
 ### 소스코드
 **wid6.py**
 ```python
@@ -426,7 +457,20 @@ app.exec_()
 ### 결과
 ![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid6.gif){: .align-center}
 
+### 살펴보기
+앞서서 설명했지만, `currentItemChanged`를 보면
+```python
+    def item_changed(self, data):
+        print('item_changed', data.text())
+```
+`data`를 아이템 형태로 받기 때문에, 아이템 자체를 조작하거나, `.text()`로 텍스트에 접근할 수 있다.
+
 ## 6. QLineEdit
+`QLineEdit`위젯은 단순한 한줄 텍스트의 수정가능한 박스로, 회원가입등을 할때 아이디/비밀번호/이메일/성명 
+등을 입력시 많이 접해본 형태의 위젯일 것이다. 이 필드를 이용해서 유저의 입력을 날것으로 받아 들일 수도 
+있겠지만, 특정형태를 강제하고 싶은 경우, 예를들어 비밀번호 규칙이나, 전화번호, 이메일의 형식의 규격을 
+맞추도록 하기 위해서 우리는 그 필드의 값에 접근 할 방법을 알아야 할 것이다.
+
 ### 소스코드
 **wid7.py**
 ```python
@@ -451,7 +495,7 @@ class MainWindow(QMainWindow):
         print("[return_pressed]")
 
     def selection_changed(self):
-        s = self.centralWidget().selectedText()
+        data = self.centralWidget().selectedText()
         print("[selection_changed]", data)
         
     def text_changed(self, data):
@@ -468,6 +512,31 @@ app.exec_()
 
 ### 결과
 ![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid7.gif){: .align-center}
+
+### 살펴보기
+`.setPlaceHolderText`를 이용하면 현재의 위젯이 받고 싶은 정보를 위젯에 표현 할 수 있다. 또한 만약 텍스트
+길이 제한을 두고 싶다면 `.setMaxLength(20)`와 같이 설정해 주면 된다. 입력/수정을 막고 읽기만 가능하게 하고
+싶다면 `.setReadOnly(True)`를 설정해 주면 된다.
+
+`returnPressed`의 경우, `return`(엔터키)이 눌렸을 때 발동되는 시그널이다.  
+`selectionChanged`의 경우 현재 위젯에 입력된 텍스트를 드래그 할때 발생되는 시그널이며,  
+`.centralWidget().selectedText()`으로 선택된 텍스트에 접근 할 수 있다.  
+`textEdited`와 `textChanged`는 우리가 타이핑을 하거나 지울때 발동되어서 같은 기능으로 착각 할 수 있지만,  
+`textEdited`는 능동적으로 텍스트를 타이핑하거나 지웠을 때 발동되는 것이고,  
+`textChanged`는 수동적으로 텍스트가 수정되었을 때 발동 되는 것이다.  
+차이를 이해하려면 결과에서 `returnPressed`가 발동되어 텍스트가 수정되었을 때, 우리는 능동적으로 수정하지는
+않았지만, 텍스트는 변화하였다. 따라서 `textChanged`만 발동이 되게 된다.
+
+**Input Validation example**  
+`.setInputMask('000.000.000.000;_')`처럼 입력해주면 IP주소 형식으로 받을 수 있다. 아래는 몇 가지 다른 예시.  
+@ `000.000.000.000;_` IP주소. 빈자리를 _로 표시  
+@ `HH:HH:HH:HH:HH:HH;_` MAC address(네트워크 어댑터(랜카드)의 물리적 주소). 빈자리를 _로 표시  
+@ `0000-00-00` ISO 날짜; 빈자리를 스페이스로 표시  
+@ `>AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#` 라이센스 번호; 모두 대문자로, 빈자리는 #로 표시.  
+@ 디테일한 형식은 [공식 링크](https://doc.qt.io/qt-5/qlineedit.html#inputMask-prop)참고
+{: .notice--info}
+
+
 
 ## 7. QSpinBox, QDoubleSpinBox
 ### 소스코드
