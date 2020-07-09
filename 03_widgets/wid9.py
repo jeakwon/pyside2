@@ -12,7 +12,7 @@ class MainWindow(QMainWindow):
         
         widget.setSingleStep(2)
         widget.valueChanged.connect(self.value_changed)
-        widget.sliderMoved.connect(self.slider_position)
+        widget.sliderMoved.connect(self.slider_moved)
         widget.sliderPressed.connect(self.slider_pressed)
         widget.sliderReleased.connect(self.slider_released)
         
@@ -21,8 +21,8 @@ class MainWindow(QMainWindow):
     def value_changed(self, data):
         print("[value_changed]", data)
     
-    def slider_position(self, data):
-        print("[slider_position]", data)
+    def slider_moved(self, data):
+        print("[slider_moved]", data)
     
     def slider_pressed(self):
         print("[slider_pressed]")
