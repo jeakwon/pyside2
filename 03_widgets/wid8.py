@@ -21,11 +21,11 @@ class MainWindow(QMainWindow):
         
         self.setCentralWidget(widget)
     
-    def value_changed(self, i):
-        print(i)
+    def value_changed(self, data):
+        print(data)
     
-    def value_changed_str(self, s):
-        print(s)
+    def value_changed_str(self, data):
+        print(data)
 
 app = QApplication(sys.argv)
 win = MainWindow()

@@ -361,11 +361,238 @@ class MainWindow(QMainWindow):
 {: .notice--info}
 
 ## 4. QComboBox
+### 소스코드
+**wid5.py**
+```python
+import sys
+from PySide2.QtWidgets import QApplication, QComboBox, QMainWindow
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        widget = QComboBox()
+
+        widget.addItems(["First", "Second", "Third"])
+        widget.currentIndexChanged.connect(self.index_changed)
+        widget.currentTextChanged.connect(self.text_changed)
+
+        self.setCentralWidget(widget)
+
+    def index_changed(self, data):
+        print('index_changed', data)
+
+    def text_changed(self, data):
+        print('item_changed', data)
+
+app = QApplication(sys.argv)
+win = MainWindow()
+win.show()
+app.exec_()
+```
+
+### 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid5.gif){: .align-center}
+
 ## 5. QListBox
+### 소스코드
+**wid6.py**
+```python
+import sys
+from PySide2.QtWidgets import QApplication, QMainWindow, QListWidget
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        widget = QListWidget()
+        
+        widget.addItems(["First", "Second", "Third"])
+        widget.currentItemChanged.connect(self.item_changed)
+        widget.currentTextChanged.connect(self.text_changed)
+        
+        self.setCentralWidget(widget)
+
+    def item_changed(self, data):
+        print('item_changed', data.text())
+
+    def text_changed(self, data):
+        print('text_changed', data)
+        
+app = QApplication(sys.argv)
+win = MainWindow()
+win.show()
+app.exec_()
+```
+
+### 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid6.gif){: .align-center}
+
 ## 6. QLineEdit
+### 소스코드
+**wid7.py**
+```python
+import sys
+from PySide2.QtWidgets import QApplication, QMainWindow, QLineEdit
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        widget = QLineEdit()
+
+        widget.setPlaceholderText("place_holder_text")
+        widget.returnPressed.connect(self.return_pressed)
+        widget.selectionChanged.connect(self.selection_changed)
+        widget.textChanged.connect(self.text_changed)
+        widget.textEdited.connect(self.text_edited)
+        
+        self.setCentralWidget(widget)
+
+    def return_pressed(self):
+        self.centralWidget().setText("return_pressed")
+        print("[return_pressed]")
+
+    def selection_changed(self):
+        s = self.centralWidget().selectedText()
+        print("[selection_changed]", data)
+        
+    def text_changed(self, data):
+        print("[text_changed]", data)
+
+    def text_edited(self, data):
+        print("[text_edited]", data)
+
+app = QApplication(sys.argv)
+win = MainWindow()
+win.show()
+app.exec_()
+```
+
+### 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid7.gif){: .align-center}
+
 ## 7. QSpinBox, QDoubleSpinBox
+### 소스코드
+**wid8.py**
+```python
+import sys
+from PySide2.QtWidgets import QApplication, QMainWindow, QSpinBox
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        widget = QSpinBox()
+        # widget = QDoubleSpinBox()
+        
+        widget.setMinimum(-10)
+        widget.setMaximum(3)
+        # widget.setRange(-10,3)
+
+        widget.setPrefix("$")
+        widget.setSuffix("c")
+        widget.setSingleStep(3) # 0.5 for QDoubleSpinBox
+        widget.valueChanged.connect(self.value_changed)
+        widget.valueChanged[str].connect(self.value_changed_str)
+        
+        self.setCentralWidget(widget)
+    
+    def value_changed(self, data):
+        print(data)
+    
+    def value_changed_str(self, data):
+        print(data)
+
+app = QApplication(sys.argv)
+win = MainWindow()
+win.show()
+app.exec_()
+```
+
+### 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid8.gif){: .align-center}
+
 ## 8. QSlider
+### 소스코드
+**wid9.py**
+```python
+import sys
+from PySide2.QtWidgets import QApplication, QMainWindow, QSlider
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        widget = QSlider()
+        widget.setMinimum(-10)
+        widget.setMaximum(3)
+        # Or: widget.setRange(-10,3)
+        
+        widget.setSingleStep(3)
+        widget.valueChanged.connect(self.value_changed)
+        widget.sliderMoved.connect(self.slider_position)
+        widget.sliderPressed.connect(self.slider_pressed)
+        widget.sliderReleased.connect(self.slider_released)
+        
+        self.setCentralWidget(widget)
+    
+    def value_changed(self, data):
+        print(data)
+    
+    def slider_position(self, data):
+        print("position", data)
+    
+    def slider_pressed(self):
+        print("Pressed!")
+    
+    def slider_released(self):
+        print("Released")
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+### 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid9.gif){: .align-center}
+
 ## 9. QDial
+### 소스코드
+**wid10.py**
+```python
+import sys
+from PySide2.QtWidgets import QApplication, QMainWindow, QDial
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("My App")
+        widget = QDial()
+        widget.setRange(-10, 100)
+        widget.setSingleStep(0.5)
+        widget.valueChanged.connect(self.value_changed)
+        widget.sliderMoved.connect(self.slider_position)
+        widget.sliderPressed.connect(self.slider_pressed)
+        widget.sliderReleased.connect(self.slider_released)
+        self.setCentralWidget(widget)
+        
+    def value_changed(self, i):
+        print(i)
+
+    def slider_position(self, p):
+        print("position", p)
+
+    def slider_pressed(self):
+        print("Pressed!")
+
+    def slider_released(self):
+        print("Released")
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
+
+### 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/03_widgets/wid10.gif){: .align-center}
 
 # 참고
 * This post was written based on Martin Fitzpatrick's Create GUI Applications with QT & Python - PySide2 [Official Link](www.learnpyqt.com){: .btn .btn--inverse}

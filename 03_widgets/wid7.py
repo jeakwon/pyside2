@@ -22,13 +22,13 @@ class MainWindow(QMainWindow):
 
     def selection_changed(self):
         s = self.centralWidget().selectedText()
-        print("[selection_changed]", s)
+        print("[selection_changed]", data)
         
-    def text_changed(self, s):
-        print("[text_changed]", s)
+    def text_changed(self, data):
+        print("[text_changed]", data)
 
-    def text_edited(self, s):
-        print("[text_edited]", s)
+    def text_edited(self, data):
+        print("[text_edited]", data)
 
 app = QApplication(sys.argv)
 win = MainWindow()

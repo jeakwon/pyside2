@@ -19,11 +19,11 @@ class MainWindow(QMainWindow):
         
         self.setCentralWidget(widget)
     
-    def value_changed(self, i):
-        print(i)
+    def value_changed(self, data):
+        print(data)
     
-    def slider_position(self, p):
-        print("position", p)
+    def slider_position(self, data):
+        print("position", data)
     
     def slider_pressed(self):
         print("Pressed!")
