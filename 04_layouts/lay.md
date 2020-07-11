@@ -14,12 +14,11 @@ PySide2의 레이아웃에 대하여 알아보자
 
 # 레이아웃이란?
 **Layout 종류**  
-
 @ `QHBoxLayout`: 일자형 가로 박스 레이아웃  
 @ `QVBoxLayout`: 일자형 세로 박스 레이아웃  
 @ `QGridLayout`: (x, y) 그리드 인덱스를 이용한 레이아웃  
 @ `QStackedLayout`: z축으로 여러개가 겹쳐질 수 있는 레이아웃  
-@ `QTabWidget`: 
+@ `QTabWidget`: 레이아웃은 아니지만 `QStackedLayout`처럼 중첩이 가능한 위젯.
 .{: .notice--info}
 
 # 1. QVBoxLayout 
