@@ -27,14 +27,15 @@ class MainWindow(QMainWindow):
         for i, label in enumerate(["red", "green", "blue", "yellow"]):
             button = QPushButton(label)
             widget = Color(label)
+
             # def func(x=i):
             #     return layout_bot.setCurrentIndex(x)
             # button.pressed.connect(func)
+
             button.pressed.connect(lambda x=i: layout_bot.setCurrentIndex(x))
 
             layout_top.addWidget(button)
             layout_bot.addWidget(widget)
-
         
         widget = QWidget()
         widget.setLayout(layout)

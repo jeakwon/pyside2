@@ -10,21 +10,23 @@ class Color(QWidget):
         self.setPalette(palette)
 
 import sys
-from PySide2.QtWidgets import QApplication, QLabel, QMainWindow, QPushButton, QTabWidget, QWidget
+from PySide2.QtWidgets import QApplication, QMainWindow, QTabWidget
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        tabs = QTabWidget()
-        tabs.setDocumentMode(True)
-        tabs.setMovable(True)
-        tabs.setTabPosition(QTabWidget.North)
+        widget = QTabWidget()
+        widget.setTabPosition(QTabWidget.North)
         
-        for n, color in enumerate(["red", "green", "blue", "yellow"]):
-            tabs.addTab(Color(color), color)
+        for label in ["red", "green", "blue", "yellow"]:
+            widget.addTab(Color(label), label)
             
-        self.setCentralWidget(tabs)
+        widget.setMovable(True)
+        widget.setTabsClosable(True)
+        widget.tabCloseRequested.connect(widget.removeTab)
+
+        self.setCentralWidget(widget)
 
 app = QApplication(sys.argv)
 win = MainWindow()

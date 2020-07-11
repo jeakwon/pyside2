@@ -10,7 +10,7 @@ class Color(QWidget):
         self.setPalette(palette)
 
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QHBoxLayout, QVBoxLayout, QStackedLayout
+from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QStackedLayout
 
 class MainWindow(QMainWindow):
     def __init__(self):
