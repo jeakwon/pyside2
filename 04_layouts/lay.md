@@ -106,7 +106,7 @@ app.exec_()
 ## 결과
 ![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay2.png){: .align-center}
 
-# 3. Nesting layouts
+# 3. 레이아웃 중첩
 ## 소스코드
 **lay3.py**
 ```python
@@ -207,7 +207,7 @@ app.exec_()
 ## 결과
 ![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay4.gif){: .align-center}
 
-# 5. QStackedLayout
+# 5. QStackedLayout - 
 multiple widgets in the same space
 ## 소스코드
 **lay5.py**
@@ -250,7 +250,7 @@ app.exec_()
 ## 결과
 ![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay5.gif){: .align-center}
 
-# 6. QTabWidget
+# 6. QStackedLayout - 응용
 multiple widgets in the same space
 ## 소스코드
 **lay6.py**
