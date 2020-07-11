@@ -16,23 +16,26 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        layout = QHBoxLayout()
+
         l1 = QVBoxLayout()
         l1.addWidget(Color("red"))
         l1.addWidget(Color("green"))
         l1.addWidget(Color("blue"))
         l1.addWidget(Color("yellow"))
+        layout.addLayout(l1)
 
         l2 = QVBoxLayout()
         l2.addWidget(Color("black"))
         l2.addWidget(Color("white"))
+        layout.addLayout(l2)
 
         l3 = QVBoxLayout()
         l3.addWidget(Color("grey"))
-
-        layout = QHBoxLayout()
-        layout.addLayout(l1)
-        layout.addLayout(l2)
         layout.addLayout(l3)
+
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(20)
 
         widget = QWidget()
         widget.setLayout(layout)

@@ -10,37 +10,25 @@ class Color(QWidget):
         self.setPalette(palette)
 
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout
+from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-
-        l1 = QVBoxLayout()
-        l1.addWidget(Color("red"))
-        l1.addWidget(Color("green"))
-        l1.addWidget(Color("blue"))
-        l1.addWidget(Color("yellow"))
-
-        l2 = QVBoxLayout()
-        l2.addWidget(Color("black"))
-        l2.addWidget(Color("white"))
-
-        l3 = QVBoxLayout()
-        l3.addWidget(Color("grey"))
-
-        layout = QHBoxLayout()
-        layout.addLayout(l1)
-        layout.addLayout(l2)
-        layout.addLayout(l3)
-        layout.setContentsMargins(0, 0, 0, 0)
-        layout.setSpacing(5)
+    
+        layout = QGridLayout()
+        layout.addWidget(Color("red"), 0, 0)
+        layout.addWidget(Color("green"), 1, 0)
+        layout.addWidget(Color("blue"), 0, 1)
+        layout.addWidget(Color("yellow"), 1, 1)
+        layout.addWidget(Color("black"), 2, 2)
+        layout.addWidget(Color("white"), 100, 0)
+        layout.addWidget(Color("grey"), 100, 100)
 
         widget = QWidget()
         widget.setLayout(layout)
-
         self.setCentralWidget(widget)
-        
+
 app = QApplication(sys.argv)
 window = MainWindow()
 window.show()

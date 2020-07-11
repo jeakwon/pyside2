@@ -10,26 +10,25 @@ class Color(QWidget):
         self.setPalette(palette)
 
 import sys
-from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout
+from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QStackedLayout
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
     
-        layout = QGridLayout()
-        layout.addWidget(Color("red"), 0, 0)
-        layout.addWidget(Color("green"), 1, 0)
-        layout.addWidget(Color("blue"), 0, 1)
-        layout.addWidget(Color("yellow"), 1, 1)
-        layout.addWidget(Color("black"), 2, 2)
-        layout.addWidget(Color("white"), 100, 0)
-        layout.addWidget(Color("grey"), 100, 100)
+        layout = QStackedLayout()
+        layout.addWidget(Color("red"))
+        layout.addWidget(Color("green"))
+        layout.addWidget(Color("blue"))
+        layout.addWidget(Color("yellow"))
+
+        layout.setCurrentIndex(0)
         
         widget = QWidget()
         widget.setLayout(layout)
         self.setCentralWidget(widget)
 
 app = QApplication(sys.argv)
-window = MainWindow()
-window.show()
+win = MainWindow()
+win.show()
 app.exec_()
