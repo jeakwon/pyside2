@@ -12,7 +12,7 @@ header:
 PySide2의 레이아웃에 대하여 알아보자
 [소스코드](https://github.com/jeakwon/pyside2/tree/master/04_layouts){: .btn .btn--primary}
 
-# 1. 레이아웃이란
+# 레이아웃이란?
 **Layout 종류**  
 
 @ `QHBoxLayout`: 일자형 가로 박스 레이아웃  
@@ -22,8 +22,9 @@ PySide2의 레이아웃에 대하여 알아보자
 @ `QTabWidget`: 
 .{: .notice--info}
 
-# 2. QVBoxLayout 
+# 1. QVBoxLayout 
 vertically arranged widgets
+## 소스코드
 **lay1.py**
 ```python
 from PySide2.QtGui import QColor, QPalette
@@ -60,10 +61,12 @@ window = MainWindow()
 window.show()
 app.exec_()
 ```
+## 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay1.png){: .align-center}
 
-
-# 3. QHBoxLayout 
+# 2. QHBoxLayout 
 horizontally arranged widgets
+## 소스코드
 **lay2.py**
 ```python
 from PySide2.QtGui import QColor, QPalette
@@ -100,8 +103,11 @@ window = MainWindow()
 window.show()
 app.exec_()
 ```
+## 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay2.png){: .align-center}
 
-# 4. Nesting layouts
+# 3. Nesting layouts
+## 소스코드
 **lay3.py**
 ```python
 from PySide2.QtGui import QColor, QPalette
@@ -153,10 +159,13 @@ window = MainWindow()
 window.show()
 app.exec_()
 ```
+## 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay3.gif){: .align-center}
 
 
-# 5. QGridLayout
+# 4. QGridLayout
 widgets arranged in a grid
+## 소스코드
 **lay4.py**
 ```python
 from PySide2.QtGui import QColor, QPalette
@@ -195,9 +204,12 @@ window = MainWindow()
 window.show()
 app.exec_()
 ```
+## 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay4.gif){: .align-center}
 
-# 6. QStackedLayout
+# 5. QStackedLayout
 multiple widgets in the same space
+## 소스코드
 **lay5.py**
 ```python
 from PySide2.QtGui import QColor, QPalette
@@ -235,9 +247,12 @@ win = MainWindow()
 win.show()
 app.exec_()
 ```
+## 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay5.gif){: .align-center}
 
-# 7. QTabWidget
+# 6. QTabWidget
 multiple widgets in the same space
+## 소스코드
 **lay6.py**
 ```python
 from PySide2.QtGui import QColor, QPalette
@@ -288,8 +303,11 @@ win = MainWindow()
 win.show()
 app.exec_()
 ```
+## 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay6.gif){: .align-center}
 
-# 8. QTabWidget
+# 7. QTabWidget
+## 소스코드
 **lay7.py**
 ```python
 from PySide2.QtGui import QColor, QPalette
@@ -327,3 +345,5 @@ win = MainWindow()
 win.show()
 app.exec_()
 ```
+## 결과
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/04_layouts/lay7.gif){: .align-center}

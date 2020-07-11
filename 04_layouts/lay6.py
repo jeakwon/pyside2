@@ -1,3 +1,5 @@
+# https://jeakwon.github.io/pyside2/pyside2-layouts/
+
 from PySide2.QtGui import QColor, QPalette
 from PySide2.QtWidgets import QWidget
 
