@@ -122,23 +122,26 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
+        layout = QHBoxLayout()
+
         l1 = QVBoxLayout()
         l1.addWidget(Color("red"))
         l1.addWidget(Color("green"))
         l1.addWidget(Color("blue"))
         l1.addWidget(Color("yellow"))
+        layout.addLayout(l1)
 
         l2 = QVBoxLayout()
         l2.addWidget(Color("black"))
         l2.addWidget(Color("white"))
+        layout.addLayout(l2)
 
         l3 = QVBoxLayout()
         l3.addWidget(Color("grey"))
-
-        layout = QHBoxLayout()
-        layout.addLayout(l1)
-        layout.addLayout(l2)
         layout.addLayout(l3)
+
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(20)
 
         widget = QWidget()
         widget.setLayout(layout)
@@ -154,10 +157,173 @@ app.exec_()
 
 # 5. QGridLayout
 widgets arranged in a grid
+**lay4.py**
+```python
+from PySide2.QtGui import QColor, QPalette
+from PySide2.QtWidgets import QWidget
+
+class Color(QWidget):
+    def __init__(self, color):
+        super().__init__()
+        self.setAutoFillBackground(True)
+        palette = self.palette()
+        palette.setColor(QPalette.Window, QColor(color))
+        self.setPalette(palette)
+
+import sys
+from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QGridLayout
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+    
+        layout = QGridLayout()
+        layout.addWidget(Color("red"), 0, 0)
+        layout.addWidget(Color("green"), 1, 0)
+        layout.addWidget(Color("blue"), 0, 1)
+        layout.addWidget(Color("yellow"), 1, 1)
+        layout.addWidget(Color("black"), 2, 2)
+        layout.addWidget(Color("white"), 100, 0)
+        layout.addWidget(Color("grey"), 100, 100)
+
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
+
+app = QApplication(sys.argv)
+window = MainWindow()
+window.show()
+app.exec_()
+```
 
 # 6. QStackedLayout
 multiple widgets in the same space
+**lay5.py**
+```python
+from PySide2.QtGui import QColor, QPalette
+from PySide2.QtWidgets import QWidget
+
+class Color(QWidget):
+    def __init__(self, color):
+        super().__init__()
+        self.setAutoFillBackground(True)
+        palette = self.palette()
+        palette.setColor(QPalette.Window, QColor(color))
+        self.setPalette(palette)
+
+import sys
+from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QStackedLayout
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+    
+        layout = QStackedLayout()
+        layout.addWidget(Color("red"))
+        layout.addWidget(Color("green"))
+        layout.addWidget(Color("blue"))
+        layout.addWidget(Color("yellow"))
+
+        layout.setCurrentIndex(0)
+        
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
+
+app = QApplication(sys.argv)
+win = MainWindow()
+win.show()
+app.exec_()
+```
 
 # 7. QTabWidget
 multiple widgets in the same space
+**lay6.py**
+```python
+from PySide2.QtGui import QColor, QPalette
+from PySide2.QtWidgets import QWidget
 
+class Color(QWidget):
+    def __init__(self, color):
+        super().__init__()
+        self.setAutoFillBackground(True)
+        palette = self.palette()
+        palette.setColor(QPalette.Window, QColor(color))
+        self.setPalette(palette)
+
+import sys
+from PySide2.QtWidgets import (
+    QApplication, QMainWindow, QWidget, QPushButton, QHBoxLayout, QVBoxLayout, QStackedLayout)
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+    
+        layout = QVBoxLayout()
+        layout_top = QHBoxLayout()
+        layout_bot = QStackedLayout()
+
+        layout.addLayout(layout_top)
+        layout.addLayout(layout_bot)
+
+        for i, label in enumerate(["red", "green", "blue", "yellow"]):
+            button = QPushButton(label)
+            widget = Color(label)
+
+            # def func(x=i):
+            #     return layout_bot.setCurrentIndex(x)
+            # button.pressed.connect(func)
+
+            button.pressed.connect(lambda x=i: layout_bot.setCurrentIndex(x))
+
+            layout_top.addWidget(button)
+            layout_bot.addWidget(widget)
+        
+        widget = QWidget()
+        widget.setLayout(layout)
+        self.setCentralWidget(widget)
+
+app = QApplication(sys.argv)
+win = MainWindow()
+win.show()
+app.exec_()
+```
+
+# 8. QTabWidget
+**lay7.py**
+```python
+from PySide2.QtGui import QColor, QPalette
+from PySide2.QtWidgets import QWidget
+
+class Color(QWidget):
+    def __init__(self, color):
+        super().__init__()
+        self.setAutoFillBackground(True)
+        palette = self.palette()
+        palette.setColor(QPalette.Window, QColor(color))
+        self.setPalette(palette)
+
+import sys
+from PySide2.QtWidgets import QApplication, QMainWindow, QTabWidget
+
+class MainWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        widget = QTabWidget()
+        widget.setTabPosition(QTabWidget.North)
+        
+        for label in ["red", "green", "blue", "yellow"]:
+            widget.addTab(Color(label), label)
+            
+        widget.setMovable(True)
+        widget.setTabsClosable(True)
+        widget.tabCloseRequested.connect(widget.removeTab)
+
+        self.setCentralWidget(widget)
+
+app = QApplication(sys.argv)
+win = MainWindow()
+win.show()
+app.exec_()
+```
