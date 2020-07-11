@@ -20,6 +20,7 @@ PySide2의 레이아웃에 대하여 알아보자
 @ `QVBoxLayout`: 일자형 세로 박스 레이아웃  
 @ `QGridLayout`: (x, y) 그리드 인덱스를 이용한 레이아웃  
 @ `QStackedLayout`: z축으로 여러개가 겹쳐질 수 있는 레이아웃  
+@ `QTabWidget`: 
 .{: .notice--info}
 
 # 2. QVBoxLayout 
@@ -48,9 +49,12 @@ horizontally arranged widgets
 
 # 4. Nesting layouts
 
-# 5. QGridLayout 
+# 5. QGridLayout
 widgets arranged in a grid
 
-# 6. QStackedLayout 
+# 6. QStackedLayout
+multiple widgets in the same space
+
+# 7. QTabWidget
 multiple widgets in the same space
 

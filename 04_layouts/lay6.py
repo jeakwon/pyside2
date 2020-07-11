@@ -22,7 +22,7 @@ class MainWindow(QMainWindow):
         layout.addWidget(Color("blue"))
         layout.addWidget(Color("yellow"))
 
-        layout.setCurrentIndex(2)
+        layout.setCurrentIndex(0)
         
         widget = QWidget()
         widget.setLayout(layout)

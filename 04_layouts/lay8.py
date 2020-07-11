@@ -17,12 +17,14 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         tabs = QTabWidget()
-        tabs.setTabPosition(QTabWidget.West)
+        tabs.setDocumentMode(True)
         tabs.setMovable(True)
+        tabs.setTabPosition(QTabWidget.North)
         
         for n, color in enumerate(["red", "green", "blue", "yellow"]):
             tabs.addTab(Color(color), color)
-            self.setCentralWidget(tabs)
+            
+        self.setCentralWidget(tabs)
 
 app = QApplication(sys.argv)
 win = MainWindow()
