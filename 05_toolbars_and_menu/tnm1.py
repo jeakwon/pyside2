@@ -1,4 +1,4 @@
-import os, sys
+import sys
 from PySide2.QtWidgets import QMainWindow, QApplication, QWidget, QToolBar, QAction, QStatusBar
 from PySide2.QtGui import QIcon
 from PySide2.QtCore import QSize
