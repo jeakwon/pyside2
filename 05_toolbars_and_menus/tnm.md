@@ -260,4 +260,4 @@ X 메뉴에서 아이템을 제거하기보다는 *disable*시키기
 
 # 참고
 * This post was written based on Martin Fitzpatrick's Create GUI Applications with QT & Python - PySide2  
-[LearnPyQt](https://www.learnpyqt.com/){: .btn .btn--inverse}
+[Official Link](https://www.learnpyqt.com/){: .btn .btn--inverse}
