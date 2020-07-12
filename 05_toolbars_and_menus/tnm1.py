@@ -1,3 +1,5 @@
+# https://jeakwon.github.io/pyside2/pyside2-toolbars-and-menus/
+
 import sys
 from PySide2.QtWidgets import QMainWindow, QApplication, QWidget, QToolBar, QAction, QStatusBar
 from PySide2.QtGui import QIcon

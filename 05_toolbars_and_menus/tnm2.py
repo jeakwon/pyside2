@@ -1,3 +1,5 @@
+# https://jeakwon.github.io/pyside2/pyside2-toolbars-and-menus/
+
 import sys
 from PySide2.QtWidgets import QMainWindow, QApplication, QWidget, QAction, QStatusBar
 from PySide2.QtGui import QIcon
@@ -14,13 +16,15 @@ class MainWindow(QMainWindow):
         menu = menubar.addMenu("&Menu") # "&"" allows short cut access "alt+M"
 
         action_text = QAction("텍스트", self)
-        menu_text = menu.addAction(action_text)
+        menu.addAction(action_text)
+
+        action_text.setCheckable(True)
 
         menu.addSeparator()
         submenu = menu.addMenu("submenu")
 
         action_icon = QAction(QIcon("icon.png"), "아이콘", self)
-        menu_icon = submenu.addAction(action_icon)
+        submenu.addAction(action_icon)
         
         action_icon.triggered.connect(self.on_click)
         action_icon.setCheckable(True)

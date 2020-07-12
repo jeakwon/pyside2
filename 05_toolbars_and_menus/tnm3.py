@@ -1,9 +1,10 @@
+# https://jeakwon.github.io/pyside2/pyside2-toolbars-and-menus/
 # icon source: https://feathericons.com/
 
 import sys
 from PySide2.QtWidgets import QMainWindow, QApplication, QWidget, QToolBar, QAction, QStatusBar
 from PySide2.QtGui import QIcon
-from PySide2.QtCore import Qt
+from PySide2.QtCore import Qt, QSize
 
 class MainWindow(QMainWindow):
     def __init__(self):
