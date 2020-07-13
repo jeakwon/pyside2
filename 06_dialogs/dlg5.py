@@ -11,11 +11,13 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(btn)
     
     def on_click(self):
-        button = QMessageBox.question(self, "Question", "Do you have any question?")
-        if button == QMessageBox.Yes:
-            print("Yes", button)
-        elif button == QMessageBox.No:
-            print("No", button)
+        ret = QMessageBox.question(
+            self, "Question", "Do you have any question?")
+        print(ret)
+        if ret == QMessageBox.Yes:
+            print("Yes")
+        elif ret == QMessageBox.No:
+            print("No")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -16,11 +16,12 @@ class MainWindow(QMainWindow):
         dialog.setText("Do you have any question?")
         dialog.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
         dialog.setIcon(QMessageBox.Question)
-        button = dialog.exec_()
-        if button == QMessageBox.Yes:
-            print("Yes", button)
-        elif button == QMessageBox.No:
-            print("No", button)
+        ret = dialog.exec_()
+        print("ret:", ret)
+        if ret == QMessageBox.Yes:
+            print("Yes")
+        elif ret == QMessageBox.No:
+            print("No")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

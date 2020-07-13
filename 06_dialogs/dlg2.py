@@ -14,7 +14,8 @@ class Dialog(QDialog):
         label.setAlignment(Qt.AlignCenter)
         layout.addWidget(label)
         
-        btnbox = QDialogButtonBox(QDialogButtonBox.Ok|QDialogButtonBox.Cancel)
+        btns = QDialogButtonBox.Ok|QDialogButtonBox.Cancel
+        btnbox = QDialogButtonBox(btns)
         layout.addWidget(btnbox)
         
         self.setLayout(layout)

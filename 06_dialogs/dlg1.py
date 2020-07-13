@@ -16,15 +16,16 @@ class MainWindow(QMainWindow):
         dialog.setWindowTitle("Dialog")
         
         layout = QVBoxLayout()
+        dialog.setLayout(layout)
 
         label = QLabel("Message")
         label.setAlignment(Qt.AlignCenter)
         layout.addWidget(label)
-        
-        btnbox = QDialogButtonBox(QDialogButtonBox.Ok|QDialogButtonBox.Cancel)
+
+        btns = QDialogButtonBox.Ok|QDialogButtonBox.Cancel
+        btnbox = QDialogButtonBox(btns)
         layout.addWidget(btnbox)
-        
-        dialog.setLayout(layout)
+
         dialog.exec_()
 
 if __name__ == "__main__":
