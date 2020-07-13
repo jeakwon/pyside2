@@ -1,3 +1,5 @@
+# https://jeakwon.github.io/pyside2/pyside2-dialogs/
+
 import sys
 from PySide2.QtWidgets import (QApplication, QMainWindow, 
 QPushButton, QDialog, QLabel, QVBoxLayout, QDialogButtonBox)
@@ -34,8 +36,6 @@ class MainWindow(QMainWindow):
         dialog = Dialog()
         print("Ok" if dialog.exec_() else "Cancel")
             
-
-
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = MainWindow()
