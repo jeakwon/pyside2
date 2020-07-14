@@ -521,7 +521,7 @@ print('\n'.join(repr(w) for w in app.allWidgets()))
 ```
 
 ### 결과 및 설명
-![](https://raw.githubusercontent.com/jeakwon/pyside2/master/06_dialogs/dlg8.gif){: .align-center}
+![](https://raw.githubusercontent.com/jeakwon/pyside2/master/06_dialogs/dlg9.gif){: .align-center}
 
 ```python
         dialog = QMessageBox(self)
