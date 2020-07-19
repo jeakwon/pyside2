@@ -1,3 +1,5 @@
+# https://jeakwon.github.io/pyside2/pyside2-windows/
+
 import sys
 from PySide2.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QVBoxLayout
 from random import randint
