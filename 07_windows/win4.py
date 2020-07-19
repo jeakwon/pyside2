@@ -1,5 +1,5 @@
 import sys
-from PySide2.QtWidgets import QApplication, QLabel, QMainWindow, QVBoxLayout, QCheckBox, QWidget
+from PySide2.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QCheckBox, QWidget
 from PySide2.QtCore import Qt
 from random import randint
 

@@ -1,5 +1,5 @@
 import sys
-from PySide2.QtWidgets import QApplication, QLabel, QMainWindow, QPushButton, QWidget, QVBoxLayout
+from PySide2.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QVBoxLayout
 from random import randint
 
 class NewWindow(QWidget):
